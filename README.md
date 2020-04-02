@@ -12,7 +12,7 @@ npm install acute-framework
 </div>
 <div id="add">
 <h2>Add to Vue.js Projects</h2>
-*/src/main.js*
+<em>/src/main.js</em>
 
 ```javascript
     import Vue from 'vue'
