@@ -1,4 +1,4 @@
-<h1>Acute-Framework</h1>
+<h1>Acute Framework</h1>
 <ul>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#add">Add to Vue.js Projects</a></li>
