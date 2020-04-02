@@ -1,0 +1,39 @@
+.notification{
+	position:fixed;
+	height: 65px;
+	left:0;
+	right: 0;
+	top: -120px;
+	background-color: #a82e2e;
+	color: #FFF;
+	transition: top 0.3s ease-in-out;
+	text-align: center;
+	z-index: 500;
+}
+.notification.show{
+	top: 50px;
+}
+.notification>div{
+	display: flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.notification a:link,
+.notification a:visited,
+.notification a:hover,
+.notification a:active
+{
+	white-space: pre;
+	color: #FFF;
+}
+.notification__close{
+	position: absolute;
+	top: 15px;
+	right: 30px;
+	font-weight: 700;
+	transform:rotate(45deg);
+	font-size: 2em;
+	cursor: pointer;
+}

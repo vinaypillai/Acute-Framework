@@ -1,0 +1,89 @@
+.banner{
+	width:100%;
+	background-size:cover;
+	min-height: 33vh;
+	box-sizing:border-box;
+	display:flex;
+	&.banner--center{
+		align-items:center;
+		justify-content:center;
+	}
+	position:relative;
+	.banner__lower-third{
+		height: calc(100%/3);
+		position:relative;
+		top:calc(200%/3);
+		width:100%;
+		left:0;
+	}
+	.banner__mid-third{
+		height: calc(100%/3);
+		position:relative;
+		top:calc(100%/3);
+		width:100%;
+		left:0;
+	}
+	.banner__upper-third{
+		height: calc(100%/3);
+		position:relative;
+		top:0;
+		width:100%;
+		left:0;
+	}
+}
+.banner-lg{
+	height:100vh;
+}
+.banner-md{
+	height:60vh;
+}
+.banner-sm{
+	height:40vh;
+}
+.banner-lg{
+	height:100vh;
+}
+.banner-md{
+	height:60vh;
+}
+.banner-sm{
+	height:40vh;
+}
+@each $breakpoint in $grid-breakpoints{
+	$i: index($grid-breakpoints, $breakpoint);
+	@media screen and (min-width: $breakpoint){
+		.#{unquote(nth($grid-types, $i))}--banner-lg{
+			height:100vh;
+		}
+		.#{unquote(nth($grid-types, $i))}--banner-md{
+			height:60vh;
+		}
+		.#{unquote(nth($grid-types, $i))}--banner-sm{
+			height:40vh;
+		}
+		.banner{
+			.#{unquote(nth($grid-types, $i))}--banner__lower-third{
+				height: calc(100%/3);
+				position:relative;
+				top:calc(200%/3);
+				width:100%;
+				left:0;
+			}
+			.#{unquote(nth($grid-types, $i))}--banner__mid-third{
+				height: calc(100%/3);
+				position:relative;
+				top:calc(100%/3);
+				width:100%;
+				left:0;
+			}
+			.#{unquote(nth($grid-types, $i))}--banner__upper-third{
+				height: calc(100%/3);
+				position:relative;
+				top:0;
+				width:100%;
+				left:0;
+			}
+		}
+	}
+
+}

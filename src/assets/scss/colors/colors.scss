@@ -1,0 +1,108 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+@use "sass:math";
+$color-map: (
+/*Semantic Colrs*/
+'primary':  #009C41,
+'secondary': #333333,
+'success': #3498db,
+'danger': #e55947,
+'hazard': #bd7800,
+/*Acute Theme Colors*/
+'white': #ffffff,
+'grey': #333333,
+/*Flat UI V1 Theme Colors*/
+'turquoise': #1abc9c,
+'emerald': #2ecc71,
+'peterriver': #3498db,
+'amethyst': #9b59b6,
+'wetasphalt': #34495e,
+'greensea': #16a085,
+'nephritis': #27ae60,
+'belizehole': #2980b9,
+'wisteria': #8e44ad,
+'midnightblue': #2c3e50,
+'sunflower': #f1c40f,
+'carrot': #e67e22,
+'alizarin': #e74c3c,
+'clouds': #ecf0f1,
+'concrete': #95a5a6,
+'orange': #f39c12,
+'pumpkin': #d35400,
+'pomegranate': #c0392b,
+'silver': #bdc3c7,
+'asbestos': #7f8c8d);
+
+@each $current-color in map.keys($color-map){
+	.bg-#{$current-color}{
+		background-color: map.get($color-map,$current-color);
+	}
+}
+@function hexToRgb($hex){
+    $hex:string.to-upper-case(inspect($hex));
+    @if quote(str-slice($hex,1,1))=='#' {
+        $hex: str-slice($hex,2,(str-length($hex)));
+    }
+    $hexDigits: ("0":0,"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"A":10,"B":11,"C":12,"D":13,"E":14,"F":15);
+    @if str-length($hex) == 6{
+        $r: map-get($hexDigits,str-slice($hex,1,1)) * math.pow(16,1) + map-get($hexDigits,str-slice($hex,2,2)) * math.pow(16,0);
+        $g: map-get($hexDigits,str-slice($hex,3,3)) * math.pow(16,1) + map-get($hexDigits,str-slice($hex,4,4)) * math.pow(16,0);
+        $b: map-get($hexDigits,str-slice($hex,5,5)) * math.pow(16,1) + map-get($hexDigits,str-slice($hex,6,7)) * math.pow(16,0);
+        @return ($r,$g,$b);
+    } @else if str-length($hex) == 3{
+        $r: map-get($hexDigits,str-slice($hex,1,1)) * math.pow(16,1) + map-get($hexDigits,str-slice($hex,1,1)) * math.pow(16,0);
+        $g: map-get($hexDigits,str-slice($hex,2,2)) * math.pow(16,1) + map-get($hexDigits,str-slice($hex,2,2)) * math.pow(16,0);
+        $b: map-get($hexDigits,str-slice($hex,3,3)) * math.pow(16,1) + map-get($hexDigits,str-slice($hex,3,3)) * math.pow(16,0);
+        @return ($r,$g,$b);
+    } @else{
+        @error "Invalid hexcode length}";
+    }
+}
+@function luminance($hex){
+    $rgb: hexToRgb($hex);
+    $compactedRgb: ();
+    @each $color in $rgb{
+        $color : $color / 255;
+        @if $color < 0.03928 {
+            $color : $color / 12.92;
+        } @else {
+            $color :  math.pow(($color + 0.055) / 1.055, 2.4);
+        }
+        $compactedRgb: append($compactedRgb,$color);
+    }
+    @return .2126 * nth($compactedRgb,1) + 0.7152 * nth($compactedRgb,2) + 0.0722 * nth($compactedRgb,3);
+}
+@function contrastTextColor($background, $primary:#FFFFFF, $secondary:#000000){
+    $minContrastRatio: 3;
+    $backgroundLuminance: luminance($background);
+    $primaryLuminance: luminance($primary);
+    $secondaryLuminance: luminance($secondary);
+    $primaryContrastRatio:0;
+    $secondaryContrastRatio:0;
+    /*Contrast Ratios for primary Color*/
+    @if $backgroundLuminance < $primaryLuminance {
+        $primaryContrastRatio : ($primaryLuminance + 0.05)/($backgroundLuminance + 0.05);
+        @debug "#{$background} - #{$primaryContrastRatio}";
+    } @else if $backgroundLuminance > $primaryLuminance {
+        $primaryContrastRatio : ($backgroundLuminance + 0.05)/($primaryLuminance + 0.05);
+    }
+    @if $primaryContrastRatio > $minContrastRatio {
+        @return $primary;
+    }
+    /*Contrast Ratios for secondary color*/
+    @if $backgroundLuminance < $secondaryLuminance {
+        $secondaryContrastRatio : ($secondaryLuminance + 0.05)/($backgroundLuminance + 0.05);
+    } @else if $backgroundLuminance > $secondaryLuminance {
+        $secondaryContrastRatio : ($backgroundLuminance + 0.05)/($secondaryLuminance + 0.05);
+    }
+    @if $secondaryContrastRatio > $minContrastRatio {
+        @return $secondary;
+    }
+    /*If neither meet min contrast, return higher contrast*/
+    @if($primaryContrastRatio > $secondaryContrastRatio){
+        @return $primary;
+    }@else{
+        @return $secondary;
+    }
+}

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+$font-stack:'Lato', sans-serif;
+$font-size: 20px;
+$font-lg: 48px;
+$font-sm: 12px;
+$font-color: #333;
+
+/*Text Align Classes*/
+.text-align-justify{
+	text-align:justify;
+}
+.text-align-right{
+	text-align:right;
+}
+.text-align-left{
+	text-align:left;
+}
+.text-align-center{
+	text-align:center;
+}

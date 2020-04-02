@@ -1,0 +1,18 @@
+//@import '../grid/grid';
+
+@each $breakpoint in $grid-breakpoints{
+	$i: index($grid-breakpoints, $breakpoint);
+	.#{unquote(nth($grid-types, $i))}--show{
+		display: none !important;
+	}
+	@media screen and (min-width: $breakpoint){
+		.#{unquote(nth($grid-types, $i))}--hide{
+			display: none !important;
+		}
+		.#{unquote(nth($grid-types, $i))}--show{
+			display: flex !important;
+		}
+	}
+
+
+}

@@ -1,0 +1,40 @@
+.modal{
+	position:fixed;
+	width:100%;
+	height:100vh;
+	transition: background-color 0.3s ease-in-out;
+	background-color:transparent;
+	z-index:555555555555555;
+	display:none;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	align-items:center;
+	justify-content:center;
+}
+.modal--active{
+	background-color:rgba(0,0,0,0.5);
+	display:flex;
+}
+.modal__close{
+	position:fixed;
+	top:5%;
+	right:5%;
+	z-index:999999999999999;
+	color:#FFF;
+	font-size:26px;
+	cursor:pointer;
+}
+.modal__close::before{
+	content: "\f00d";	
+}
+.modal__content{
+	z-index:999999999999999;
+	width:90%;
+	background-color:#FFF;
+	padding:10px;
+	border-radius:3px;
+	box-sizing:border-box;
+	max-width:700px;
+}

@@ -1,0 +1,9 @@
+.link--unformat{
+	&:link,
+	&:visited,
+	&:hover,
+	&:active{
+		text-decoration:none;
+		color: $font-color;	
+	}
+}

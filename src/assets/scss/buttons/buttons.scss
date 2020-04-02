@@ -1,0 +1,75 @@
+//@import '../colors/colors';
+
+@mixin generate-button($title, $bg-color, $border-color, $text-color){
+	.button--#{unquote($title)}--solid{
+		background-color: $bg-color;
+		color: $text-color;
+		-webkit-text-fill-color: $text-color;
+		font: 300 $font-size $font-stack;
+	}
+	.button--#{unquote($title)}--outline{
+		color: $bg-color;
+		-webkit-text-fill-color: $bg-color;
+		border: solid 1px $border-color;
+		border: solid 2px $border-color;
+		font: 300 $font-size $font-stack;
+		&:hover{
+			-webkit-text-fill-color: $text-color;
+			color: #000;
+			background-color: $bg-color;
+			filter:brightness(1);
+		}
+	}
+}
+.button{
+	all: unset;
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+	padding: 12px 42px;
+	border-radius: 5px;
+	margin:0;
+	font: 100 $font-size $font-stack;
+	letter-spacing: 0.5px;
+	box-sizing:border-box;
+	min-height: 50px;
+	filter:brightness(1);
+	transition: filter, background-color ease-in-out 0.15s;
+	cursor:pointer;
+
+}
+.button:hover{
+	filter:brightness(0.9);
+}
+@each $current-color in $color-list{
+	$i: index($color-list, $current-color);
+	@include generate-button(nth($color-name-list, $i), $current-color, #FFF, #FFF);
+}
+@include generate-button('primary', $primary, $silver, #FFF);
+@include generate-button('secondary', $secondary, $silver, $wetasphalt);
+@include generate-button('success', $success, $silver, #FFF);
+@include generate-button('hazard', $hazard, $silver, #FFF);
+@include generate-button('danger', $danger, $silver, #FFF);
+.button--circle{
+	border-radius: 100%;
+	border: none;	
+	padding: 12px;
+	box-shadow: 0 5px 15px 0 $asbestos;	
+	min-height: none;
+}
+.button--round{
+	border-radius:200px;
+}
+.button--block{
+	width:100%;
+}
+.button--multi{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.button--disabled{
+	background-color: transparent;
+	border: solid 1px $silver;
+	color: $silver;
+}
