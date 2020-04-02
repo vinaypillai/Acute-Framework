@@ -1,24 +1,15 @@
-# acute-framework
+# Acute-Framework
 
-## Project setup
-```
-npm install
-```
+## Installation
+npm install acute-framework
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Add to Vue.js Projects
+*/src/main.js*
+import Vue from 'vue'
+import App from './App.vue'
+.
+.
+.
+import AcuteFramework from 'acute-framework'
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Vue.use(AcuteFramework)

@@ -40,8 +40,8 @@
     }
 </script>
 <style lang="scss" scoped>
-    @use "@/assets/scss/colors/colors";
-    @use "@/assets/scss/typography/typography";
+    @use "../colors/colors";
+    @use "../typography/typography";
     @use "sass:color";
     @use "sass:map";
 

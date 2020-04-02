@@ -68,5 +68,5 @@
     }
 </script>
 <style lang="scss" scoped>
-    @use "@/assets/scss/grid/grid"
+    @use "grid"
 </style>

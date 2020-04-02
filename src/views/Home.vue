@@ -13,9 +13,9 @@
     </div>
 </template>
 <script type="text/javascript">
-    import acGrid from "@/components/ac-grid.vue"
-    import acCol from "@/components/ac-col.vue"
-    import acButton from "@/components/ac-button.vue"
+    import acGrid from "@/components/ac-grid/ac-grid.vue"
+    import acCol from "@/components/ac-col/ac-col.vue"
+    import acButton from "@/components/ac-button/ac-button.vue"
     export default {
         data(){
             return{
