@@ -10,6 +10,8 @@ $grid-breakpoints: "576px","768px","992px","1200px";
     box-sizing:border-box;
     width:100%;
     flex-wrap:wrap;
+    align-items: var(--align-v);
+    justify-content: var(--align-h);
 }
 @mixin col{
     display:inline-block;
@@ -96,21 +98,4 @@ $grid-breakpoints: "576px","768px","992px","1200px";
             }
         }
     }
-}
-
-/*General flex align and justify classes*/
-.justify-content-space-between{
-    justify-content: space-between;
-}
-.justify-content-center{
-    justify-content: center;
-}
-.justify-self-center{
-    justify-self: center;
-}
-.align-items-center{
-    align-items:center;
-}
-.align-self-center{
-    align-self:center;
 }

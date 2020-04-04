@@ -1,12 +1,21 @@
 <template>
     <div>
-        <ac-grid cols="5">
-            <ac-col cols="3" offset="1">
+        <ac-grid cols="5" align-h="center">
+            <ac-col cols="3">
                 <div>
                     <ac-button v-for="color in colors" :key="color" :variant="color">{{color}}</ac-button>
                 </div>
                 <div>
                     <ac-button v-for="color in colors" :key="color" :variant="color" outline>{{color}}</ac-button>
+                </div>
+                <div>
+                    <ac-button v-for="color in colors" :key="color" :variant="color" block>{{color}}</ac-button>
+                </div>
+                <div>
+                    <ac-button v-for="color in colors" :key="color" :variant="color" round>{{color}}</ac-button>
+                </div>
+                <div>
+                    <ac-button v-for="color in colors" :key="color" :variant="color" pill>{{color}}</ac-button>
                 </div>
             </ac-col>
         </ac-grid>

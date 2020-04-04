@@ -1,5 +1,5 @@
 <template>
-    <div :class="gridClass">
+    <div :class="gridClass" :style="styleObj">
         <slot></slot>
     </div>
 </template>
@@ -41,9 +41,26 @@
                     return value==-1 || parseFloat(value)<=12 && parseFloat(value)>0;
                 }
             },
+            "align-h":{
+                type:String,
+                default:"initial",
+                validator:(value)=>{
+                    let justify = ["flex-start","flex-end","center","space-between","space-around","initial","inherit"];
+                    return justify.includes(value);
+                }
+            },
+            "align-v":{
+                type:String,
+                default:"initial",
+                validator:(value)=>{
+                    let align = ["stretch","center","flex-start","flex-end","baseline","initial","inherit"];
+                    return align.includes(value);
+                }
+            },
         },
         data(){
             return {
+                styleObj:{}
             }
         },
         computed:{
@@ -63,7 +80,10 @@
             }
         },
         mounted(){
-
+            this.styleObj = {
+                "--align-h":this.alignH,
+                "--align-v":this.alignV
+            }
         }
     }
 </script>

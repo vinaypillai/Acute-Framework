@@ -83,7 +83,6 @@ $color-map: (
     /*Contrast Ratios for primary Color*/
     @if $backgroundLuminance < $primaryLuminance {
         $primaryContrastRatio : ($primaryLuminance + 0.05)/($backgroundLuminance + 0.05);
-        @debug "#{$background} - #{$primaryContrastRatio}";
     } @else if $backgroundLuminance > $primaryLuminance {
         $primaryContrastRatio : ($backgroundLuminance + 0.05)/($primaryLuminance + 0.05);
     }

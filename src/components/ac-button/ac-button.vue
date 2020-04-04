@@ -14,7 +14,7 @@
                 type:String,
                 default:"primary",
                 validator:(value)=>{
-                    let buttonVariants = ["primary","secondary","success","hazard","danger"];
+                    let buttonVariants=['primary','secondary','success','danger','hazard','white','grey','turquoise','emerald','peterriver','amethyst','wetasphalt','greensea','nephritis','belizehole','wisteria','midnightblue','sunflower','carrot','alizarin','clouds','concrete','orange','pumpkin','pomegranate','silver','asbestos'];
                     return buttonVariants.includes(value);
                 }
             },
@@ -26,12 +26,23 @@
                 type:Boolean,
                 default:false
             },
+            pill:{
+                type:Boolean,
+                default:false
+            },
+            round:{
+                type:Boolean,
+                default:false
+            },
         },
         computed:{
             buttonClass(){    
                 let buttonClass="button";
                 buttonClass+=" button--"+this.variant+"--";
                 buttonClass+= (this.outline) ? "outline" : "solid";
+                buttonClass+= (this.block) ? " button--block" : "";
+                buttonClass+= (this.pill) ? " button--pill" : "";
+                buttonClass+= (this.round) ? " button--round" : "";
                 return buttonClass;
             }
         },
@@ -60,6 +71,7 @@
                 -webkit-text-fill-color: $button-color;
                 /*text-shadow: none;*/
                 background-color: transparent;
+                filter:brightness(1);
             }
             &.button--disabled{
                 background-color: color.change($button-color,$saturation:0%);
@@ -102,23 +114,32 @@
         filter:brightness(1);
         transition: filter, background-color ease-in-out 0.15s;
         cursor:pointer;
-        :hover{
+        &:hover{
             filter:brightness(0.9);
         }
-        .button--circle{
+        &.button--circle{
             border-radius: 100%;
             border: none;   
             padding: 12px;
             box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3); 
             min-height: none;
         }
-        .button--round{
-            border-radius:200px;
+        &.button--round{
+            border-radius:9999px;
+            padding: 1%;
+            &::after{
+                content:"";
+                display: block;
+                padding-top: 100%;
+            }
         }
-        .button--block{
+        &.button--pill{
+            border-radius:9999px;
+        }
+        &.button--block{
             width:100%;
         }
-        .button--multi{
+        &.button--multi{
             text-transform: uppercase;
             font-weight: bold;
         }
