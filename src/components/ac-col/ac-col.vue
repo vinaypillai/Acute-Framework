@@ -83,22 +83,21 @@
         },
         computed:{
             colClass(){
-                let colClass="";
+                let colClass=[];
                 if(this.cols==-1 && this.xsCols==-1 && this.smCols==-1 && this.mdCols==-1 && this.lgCols==-1){
-                    colClass+='col-'+this.cols;
+                    colClass.push('col-'+this.cols);
                 }else{
-                    colClass += (this.cols !=-1) ? 'col-'+this.cols : '';
-                    colClass += (this.xsCols !=-1) ? ' col-xs-'+this.xsCols : '';
-                    colClass += (this.smCols !=-1) ? ' col-sm-'+this.smCols : '';
-                    colClass += (this.mdCols !=-1) ? ' col-md-'+this.mdCols : '';
-                    colClass += (this.lgCols !=-1) ? ' col-lg-'+this.lgCols : '';
+                    colClass.push((this.cols !=-1) ? 'col-'+this.cols : '');
+                    colClass.push((this.xsCols !=-1) ? 'col-xs-'+this.xsCols : '');
+                    colClass.push((this.smCols !=-1) ? 'col-sm-'+this.smCols : '');
+                    colClass.push((this.mdCols !=-1) ? 'col-md-'+this.mdCols : '');
+                    colClass.push((this.lgCols !=-1) ? 'col-lg-'+this.lgCols : '');
                 }
-                colClass += (this.offset !=-1) ? ' col-offset-'+this.offset : '';
-                colClass += (this.xsOffset !=-1) ? ' col-offset-xs-'+this.xsOffset : '';
-                colClass += (this.smOffset !=-1) ? ' col-offset-sm-'+this.smOffset : '';
-                colClass += (this.mdOffset !=-1) ? ' col-offset-md-'+this.mdOffset : '';
-                colClass += (this.lgOffset !=-1) ? ' col-offset-lg-'+this.lgOffset : '';
-                colClass=colClass.trim();
+                colClass.push((this.offset !=-1) ? 'col-offset-'+this.offset : '');
+                colClass.push((this.xsOffset !=-1) ? 'col-offset-xs-'+this.xsOffset : '');
+                colClass.push((this.smOffset !=-1) ? 'col-offset-sm-'+this.smOffset : '');
+                colClass.push((this.mdOffset !=-1) ? 'col-offset-md-'+this.mdOffset : '');
+                colClass.push((this.lgOffset !=-1) ? 'col-offset-lg-'+this.lgOffset : '');
                 return colClass
             }
         },

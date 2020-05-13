@@ -65,16 +65,15 @@
         },
         computed:{
             gridClass(){
-                let gridClass = "";
+                let gridClass = [];
                 if(this.cols==-1 && this.xsCols==-1 && this.smCols==-1 && this.mdCols==-1 && this.lgCols==-1){
-                    gridClass='grid-'+this.cols;
+                    gridClass.push('grid-'+this.cols);
                 }else{
-                    gridClass = (this.cols !=-1) ? ' grid-'+this.cols : '';
-                    gridClass += (this.xsCols !=-1) ? ' grid-xs-'+this.xsCols : '';
-                    gridClass += (this.smCols !=-1) ? ' grid-sm-'+this.smCols : '';
-                    gridClass += (this.mdCols !=-1) ? ' grid-md-'+this.mdCols : '';
-                    gridClass += (this.lgCols !=-1) ? ' grid-lg-'+this.lgCols : '';
-                    gridClass = gridClass.trim();
+                    gridClass.push((this.cols !=-1) ? 'grid-'+this.cols : '');
+                    gridClass.push((this.xsCols !=-1) ? 'grid-xs-'+this.xsCols : '');
+                    gridClass.push((this.smCols !=-1) ? 'grid-sm-'+this.smCols : '');
+                    gridClass.push((this.mdCols !=-1) ? 'grid-md-'+this.mdCols : '');
+                    gridClass.push((this.lgCols !=-1) ? 'grid-lg-'+this.lgCols : '');
                 }
                 return gridClass
             }

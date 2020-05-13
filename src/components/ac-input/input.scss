@@ -1,0 +1,85 @@
+@use "../ac-button/button";
+@mixin input--text
+{
+	padding: 15px;
+	background-color:#fff;
+	border-radius: 5px;
+	border: solid 1px #ccc;
+	outline: none;
+	font-size: 1em;
+	box-sizing: border-box;
+	max-width: 100%;
+	& :focus{
+		outline: none;
+	}
+}
+
+input{
+	font-size: 1rem;
+}
+input[type=''],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+input[type=date],
+input[type=week],
+input[type=datetime-local],
+textarea
+{
+	@include input--text;
+}
+
+input[type=button],
+input[type=reset],
+input[type=submit],
+input[type=file]::-webkit-file-upload-button
+{
+	@extend .button;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.input--number{
+	width: 100%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	input[type=number]{
+		width: 70%;
+		text-align: center;
+	}
+	.incrementButton,
+	.decrementButton{
+		width: 0;
+		height: 0;
+		box-sizing: border-box;
+		border-top: solid 6px transparent;
+		border-bottom: solid 6px transparent;
+		position: absolute;
+		top: calc(50% - 6px);
+		cursor: pointer;
+	}
+	.incrementButton{
+		border-left: solid 8px #333;
+		right: 0;
+	}
+	.decrementButton{
+		border-right: solid 8px #333;
+		left: 0;
+	}
+}
+textarea{
+	display:block;
+	width:100%;
+	resize: none;
+	overflow-y: auto;
+}
+label{
+	display: block;
+}

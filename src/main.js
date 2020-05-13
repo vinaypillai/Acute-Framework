@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import AcuteFramework from "../index.js";
+
+Vue.use(AcuteFramework);
 
 Vue.config.productionTip = false
 

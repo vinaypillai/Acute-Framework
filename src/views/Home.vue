@@ -1,5 +1,13 @@
 <template>
     <div>
+        <ac-nav position="right" dark>
+            <ul class="nav--links">
+                <li><a href="home">Home</a></li>
+                <li><a href="home">Home</a></li>
+                <li><a href="home">Home</a></li>
+                <li><a href="home">Home</a></li>
+            </ul>
+        </ac-nav>
         <ac-grid cols="5" align-h="center">
             <ac-col cols="3">
                 <div>
@@ -19,22 +27,69 @@
                 </div>
             </ac-col>
         </ac-grid>
+        <ac-grid>
+            <ac-col>
+                <ac-toggle :callback="()=>{$store.commit('setToggle',!$store.state.toggle)}"
+                :state="()=>$store.state.toggle"></ac-toggle>
+                <div>{{$store.state.toggle}}</div>
+            </ac-col>
+        </ac-grid>
+        <ac-grid cols="6">
+            <ac-col cols="3">  
+                <ac-grid cols="12">
+                    <ac-col cols="6">
+                        <ac-dropdown :options="dropdownOptions"></ac-dropdown>
+                    </ac-col>
+                    <ac-col cols="6">
+                        <ac-dropdown :options="dropdownOptions" dark></ac-dropdown>
+                    </ac-col>
+                </ac-grid>
+                <ac-grid cols="12">
+                    <ac-col cols="6">
+                        <ac-dropdown displace :options="dropdownOptions"></ac-dropdown>
+                    </ac-col>
+                    <ac-col cols="6">
+                        <ac-dropdown displace :options="dropdownOptions" dark></ac-dropdown>
+                    </ac-col>
+                </ac-grid>
+            </ac-col>
+        </ac-grid>
+        <ac-grid cols="6">
+            <ac-col cols="3" v-for="type in inputTypes" :key="type">  
+                <ac-grid cols="12">
+                    <ac-col cols="6">
+                        <ac-input :type="type" :ref="'input'+type" v-on:input="updateInputValues(type,$event)"></ac-input>
+                    </ac-col>
+                    <ac-col cols="6" >
+                        <div>Value:{{inputValues[type]}}</div>
+                    </ac-col>
+                </ac-grid>
+            </ac-col>
+        </ac-grid>
     </div>
 </template>
 <script type="text/javascript">
-    import acGrid from "@/components/ac-grid/ac-grid.vue"
-    import acCol from "@/components/ac-col/ac-col.vue"
-    import acButton from "@/components/ac-button/ac-button.vue"
     export default {
         data(){
             return{
-                colors:['primary','secondary','success','danger','hazard','white','grey','turquoise','emerald','peterriver','amethyst','wetasphalt','greensea','nephritis','belizehole','wisteria','midnightblue','sunflower','carrot','alizarin','clouds','concrete','orange','pumpkin','pomegranate','silver','asbestos']
+                colors:['primary','secondary','success','danger','hazard','white','grey','turquoise','emerald','peterriver','amethyst','wetasphalt','greensea','nephritis','belizehole','wisteria','midnightblue','sunflower','carrot','alizarin','clouds','concrete','orange','pumpkin','pomegranate','silver','asbestos'],
+                inputTypes:["button","checkbox","color","date","datetime-local","email","file","hidden","image","month","number","password","radio","range","reset","search","submit","tel","text","url","week"],
+                inputValues:{},
+                dropdownOptions:[
+                    {text:"element 1",value:"element 1"},
+                    {text:"element 2",value:"element 2"},
+                    {text:"element 3",value:"element 3"},
+                ]
+            }
+
+        },
+        methods:{
+            updateInputValues(type, value){
+                this.$set(this.inputValues,type,value);
             }
         },
-        components:{
-            "ac-grid":acGrid,
-            "ac-col":acCol,
-            "ac-button":acButton,
+        mounted(){
+
         }
     }
 </script>

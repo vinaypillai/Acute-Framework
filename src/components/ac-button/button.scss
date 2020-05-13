@@ -1,0 +1,96 @@
+@use "../colors/colors";
+@use "../typography/typography";
+@use "sass:color";
+@use "sass:map";
+
+$button-font-weight:600;
+@mixin generate-button($title, $button-color){
+    $text-shadow-blur:0.25px;
+    .button--#{unquote($title)}--solid{
+        background-color: $button-color;
+        color:colors.contrastTextColor($button-color);
+        -webkit-text-fill-color:colors.contrastTextColor($button-color);
+        border: solid 1px $button-color;
+        border: solid 2px $button-color;
+        font: $button-font-weight typography.$font-size typography.$font-stack;
+        &:hover:not(.button--disabled){
+            color: $button-color;
+            -webkit-text-fill-color: $button-color;
+            /*text-shadow: none;*/
+            background-color: transparent;
+            filter:brightness(1);
+        }
+        &.button--disabled{
+            background-color: color.change($button-color,$saturation:0%);
+            border: solid 1px color.change($button-color,$saturation:0%);
+            color:colors.contrastTextColor($button-color);
+        }
+    }
+    .button--#{unquote($title)}--outline{
+        color: $button-color;
+        -webkit-text-fill-color: $button-color;
+        border: solid 1px $button-color;
+        border: solid 2px $button-color;
+        font: $button-font-weight typography.$font-size typography.$font-stack;
+        &:hover:not(.button--disabled){
+            -webkit-text-fill-color:colors.contrastTextColor($button-color);
+            color: #000;
+            background-color: $button-color;
+            filter:brightness(1); 
+        }  
+        &.button--disabled{
+            background-color: transparent;
+            border: solid 1px color.change($button-color,$saturation:0%);
+            color: color.change($button-color,$saturation:0%);
+        }
+    }
+}
+.button{
+    all: unset;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 10px 42px;
+    border-radius: 5px;
+    margin:0;
+    font: $button-font-weight typography.$font-size typography.$font-stack;
+    letter-spacing: 0.5px;
+    box-sizing:border-box;
+    min-height: 50px;
+    filter:brightness(1);
+    transition: filter, background-color ease-in-out 0.15s;
+    cursor:pointer;
+    &:hover{
+        filter:brightness(0.9);
+    }
+    &.button--circle{
+        border-radius: 100%;
+        border: none;   
+        padding: 12px;
+        box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3); 
+        min-height: none;
+    }
+    &.button--round{
+        border-radius:9999px;
+        padding: 1%;
+        &::after{
+            content:"";
+            display: block;
+            padding-top: 100%;
+        }
+    }
+    &.button--pill{
+        border-radius:9999px;
+    }
+    &.button--block{
+        width:100%;
+    }
+    &.button--multi{
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+@each $current-color in map.keys(colors.$color-map){
+    @include generate-button($current-color, map.get(colors.$color-map,$current-color));
+}
