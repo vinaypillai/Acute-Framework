@@ -1,15 +1,15 @@
 {
   "name": "acute-framework",
-  "version": "0.1.16",
-  "license":"MIT",
+  "version": "0.2.0",
+  "license": "MIT",
   "author": {
-    "name":"Vinay Pillai",
-    "url":"https://github.com/vinaypillai/"
+    "name": "Vinay Pillai",
+    "url": "https://github.com/vinaypillai/"
   },
-  "main":"./index.js",
+  "main": "./index.js",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/vinaypillai/Acute-Framework.git"
+    "type": "git",
+    "url": "https://github.com/vinaypillai/Acute-Framework.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
