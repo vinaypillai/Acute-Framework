@@ -44,13 +44,11 @@
                 if(this.displace){
                     classes.push("dropdown--displace");
                 }
-                console.log(classes);
                 return classes;   
             }
         },
         methods:{
             closeDropdown(){
-                console.log("running");
                 if(!document.activeElement.classList.contains('dropdown__input') 
                     && !document.activeElement.classList.contains('dropdown') && this.dropdown.classList.contains('dropdown--active')){  
                     const options = [...document.getElementsByClassName("dropdown__option")];

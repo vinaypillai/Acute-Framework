@@ -1,5 +1,3 @@
-@use "../colors/colors";
-@use "../typography/typography";
 @use "sass:color";
 @use "sass:map";
 
@@ -12,7 +10,7 @@ $button-font-weight:600;
         -webkit-text-fill-color:colors.contrastTextColor($button-color);
         border: solid 1px $button-color;
         border: solid 2px $button-color;
-        font: $button-font-weight typography.$font-size typography.$font-stack;
+        font: $button-font-weight $font-size $font-stack;
         &:hover:not(.button--disabled){
             color: $button-color;
             -webkit-text-fill-color: $button-color;
@@ -31,7 +29,7 @@ $button-font-weight:600;
         -webkit-text-fill-color: $button-color;
         border: solid 1px $button-color;
         border: solid 2px $button-color;
-        font: $button-font-weight typography.$font-size typography.$font-stack;
+        font: $button-font-weight $font-size $font-stack;
         &:hover:not(.button--disabled){
             -webkit-text-fill-color:colors.contrastTextColor($button-color);
             color: #000;
@@ -54,7 +52,7 @@ $button-font-weight:600;
     padding: 10px 42px;
     border-radius: 5px;
     margin:0;
-    font: $button-font-weight typography.$font-size typography.$font-stack;
+    font: $button-font-weight $font-size $font-stack;
     letter-spacing: 0.5px;
     box-sizing:border-box;
     min-height: 50px;

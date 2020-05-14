@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ac-nav position="right" dark>
+        <ac-nav position="right" dark class="asd asdasd">
             <ul class="nav--links">
                 <li><a href="home">Home</a></li>
                 <li><a href="home">Home</a></li>
@@ -72,7 +72,7 @@
     export default {
         data(){
             return{
-                colors:['primary','secondary','success','danger','hazard','white','grey','turquoise','emerald','peterriver','amethyst','wetasphalt','greensea','nephritis','belizehole','wisteria','midnightblue','sunflower','carrot','alizarin','clouds','concrete','orange','pumpkin','pomegranate','silver','asbestos'],
+                colors:['primary','secondary','success','danger','hazard'],
                 inputTypes:["button","checkbox","color","date","datetime-local","email","file","hidden","image","month","number","password","radio","range","reset","search","submit","tel","text","url","week"],
                 inputValues:{},
                 dropdownOptions:[

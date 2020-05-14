@@ -39,12 +39,14 @@
         },
         data(){
             return {
-                navTopScrolled:false
+                navTopScrolled:false,
+                class:[],
+                classesSet:false,
             }
         },
         computed:{
             navClasses(){
-                let navClasses = [];
+                let navClasses = this.class;
                 navClasses.push("nav")
                 if(this.dark){
                     navClasses.push("nav--dark");
@@ -87,6 +89,9 @@
                 }else{
                     this.navTopScrolled=false;
                 }
+            },
+            updateClasses(){
+                this.class = [...this.$el.classList];
             }
         },
         beforeCreate(){
@@ -98,6 +103,14 @@
         mounted(){
             window.addEventListener("scroll",this.onScroll);
             this.onScroll();
+            this.updateClasses();
+        },
+        watch:{
+            "$el.classList":function(){
+                this.updateClasses();
+                this.$el.classList=[];
+                console.log("running");
+            }
         }
     }
 </script>

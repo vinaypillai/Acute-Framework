@@ -56,5 +56,6 @@
     }
 </script>
 <style lang="scss" scoped>
-    @use "button"
+    @debug $font-size;
+    /*@use "button"*/
 </style>

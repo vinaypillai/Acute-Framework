@@ -1,27 +1,20 @@
-<h1>Acute Framework</h1>
-<ul>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#add">Add to Vue.js Projects</a></li>
-</ul>
-<div id="installation">
-<h2>Installation</h2>
+# Acute Framework
+*   [Installation](#installation)
+*   [Add to Vue.js Projects](#add-to-vue.js-projects)
 
-```bash
-npm install acute-framework
-```
-</div>
-<div id="add">
-<h2>Add to Vue.js Projects</h2>
-<em>/src/main.js</em>
+## Installation
 
+```bash npm install acute-framework ```
+
+## Add to Vue.js Projects
+
+_/src/main.js_ 
 ```javascript
-    import Vue from 'vue'
-    import App from './App.vue'
-    .
-    .
-    .
-    import AcuteFramework from 'acute-framework'
-
-    Vue.use(AcuteFramework)
+import Vue from 'vue' 
+import App from './App.vue' 
+.
+.
+.
+import AcuteFramework from 'acute-framework'
+Vue.use(AcuteFramework) 
 ```
-</div>
