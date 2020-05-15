@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import AcuteFramework from "../index.js";
-import "@/styles/body.scss"
+import "./styles/body.scss"
 
 Vue.use(AcuteFramework);
 

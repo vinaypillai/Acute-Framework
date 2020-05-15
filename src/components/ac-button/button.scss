@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "sass:map";
-@use "@/styles/_global" as global;
+@use "../../styles/_global" as global;
 
 $button-font-weight:600;
 $text-shadow-blur:0.25px;
