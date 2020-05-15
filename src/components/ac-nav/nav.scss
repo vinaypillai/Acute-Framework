@@ -140,6 +140,9 @@ $nav-shadow-color: rgba(0,0,0,0.5);
 			 	justify-self: flex-end;
 			}
 		}
+		&.nav--dark .nav--links{
+			color:#FFF;
+		}
 	}
 }
 .nav--spacer{

@@ -75,11 +75,15 @@
                                 spacer.classList.add("nav--spacer");
                                 spacer.style.height=navHeight+"px";
                                 nav.insertAdjacentElement('afterEnd',spacer); 
+                                this.updateSpacers();
                             }
                         })
                     }
                 }
                 return navClasses
+            },
+            navElement(){
+                return this.$refs.nav;
             }
         },
         methods:{
@@ -91,10 +95,28 @@
                 }
             },
             updateClasses(){
-                this.class = [...this.$el.classList];
+                // Prepend all root classess with ac- and add root classes to nav
+                const rootClasses = [...this.$el.classList];
+                // Trim ac- prepend and add to nav
+                this.class = rootClasses.map((name)=>(name.substr(0,3)!="ac-") ? name : name.substr(3));
                 this.$el.classList=[];
+                this.class.forEach((name)=>{
+                    if(name.substr(0,3)!="ac-"){
+                        this.$el.classList.add("ac-"+name)
+                    }else{
+                        this.$el.classList.add(name)
+                    }
+                })
                 this.classesSet = true;
-            }
+            },
+            updateSpacers(){    
+                this.$nextTick(function(){
+                    const navHeight = this.navElement.getBoundingClientRect().height;
+                    [...document.getElementsByClassName("nav--spacer")].forEach((spacer)=>{
+                        spacer.style.height = navHeight +"px";
+                    })
+                })
+            },
         },
         beforeCreate(){
             this.navId = this.$uuid.v4();
@@ -106,31 +128,15 @@
             window.addEventListener("scroll",this.onScroll);
             this.onScroll();
             this.updateClasses();
+            this.updateSpacers();
         },
-        watch:{
-            $el:{
-                immedate:true,
-                deep:true,
-                handler(newVal,oldVal){
-                    let classesChanged=false;
-                    newVal.classList.forEach((name,i)=>{
-                        oldVal[i]!=name;
-                        classesChanged=true;
-                    })
-                    if(classesChanged){
-                        if(this.classesSet){
-                            this.classesSet=false;
-                        }else{
-                            this.updateClasses();
-                        }
-                    }
-                    Object.keys(this.$el.dataset).forEach((key)=>{
-                        if(key.substr(0,2)=="v-"){
-                            this.$refs['nav'].dataset[key] = "" 
-                        }
-                    })
-                }
+        updated(){
+            if(this.classesSet){
+                this.classesSet=false;
+            }else{
+                this.updateClasses();
             }
+            this.updateSpacers();
         }
     }
 </script>
