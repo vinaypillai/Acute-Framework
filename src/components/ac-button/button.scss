@@ -1,46 +1,54 @@
 @use "sass:color";
 @use "sass:map";
+@use "@/styles/_global" as global;
 
 $button-font-weight:600;
-@mixin generate-button($title, $button-color){
-    $text-shadow-blur:0.25px;
-    .button--#{unquote($title)}--solid{
-        background-color: $button-color;
-        color:global.contrastTextColor($button-color);
-        -webkit-text-fill-color:global.contrastTextColor($button-color);
-        border: solid 1px $button-color;
-        border: solid 2px $button-color;
-        font: $button-font-weight global.$font-size global.$font-stack;
-        &:hover:not(.button--disabled){
-            color: $button-color;
-            -webkit-text-fill-color: $button-color;
-            /*text-shadow: none;*/
-            background-color: transparent;
-            filter:brightness(1);
-        }
-        &.button--disabled{
-            background-color: color.change($button-color,$saturation:0%);
-            border: solid 1px color.change($button-color,$saturation:0%);
-            color:global.contrastTextColor($button-color);
-        }
-    }
-    .button--#{unquote($title)}--outline{
+$text-shadow-blur:0.25px;
+
+@mixin generate-solid($button-color){
+    background-color: $button-color;
+    color:global.contrastTextColor($button-color);
+    -webkit-text-fill-color:global.contrastTextColor($button-color);
+    border: solid 1px $button-color;
+    border: solid 2px $button-color;
+    font: $button-font-weight global.$font-size global.$font-stack;
+    &:hover:not(.button--disabled){
         color: $button-color;
         -webkit-text-fill-color: $button-color;
-        border: solid 1px $button-color;
-        border: solid 2px $button-color;
-        font: $button-font-weight global.$font-size global.$font-stack;
-        &:hover:not(.button--disabled){
-            -webkit-text-fill-color:global.contrastTextColor($button-color);
-            color: #000;
-            background-color: $button-color;
-            filter:brightness(1); 
-        }  
-        &.button--disabled{
-            background-color: transparent;
-            border: solid 1px color.change($button-color,$saturation:0%);
-            color: color.change($button-color,$saturation:0%);
-        }
+        /*text-shadow: none;*/
+        background-color: transparent;
+        filter:brightness(1);
+    }
+    &.button--disabled{
+        background-color: color.change($button-color,$saturation:0%);
+        border: solid 1px color.change($button-color,$saturation:0%);
+        color:global.contrastTextColor($button-color);
+    }
+}
+@mixin generate-outline($button-color){
+    color: $button-color;
+    -webkit-text-fill-color: $button-color;
+    border: solid 1px $button-color;
+    border: solid 2px $button-color;
+    font: $button-font-weight global.$font-size global.$font-stack;
+    &:hover:not(.button--disabled){
+        -webkit-text-fill-color:global.contrastTextColor($button-color);
+        color: #000;
+        background-color: $button-color;
+        filter:brightness(1); 
+    }  
+    &.button--disabled{
+        background-color: transparent;
+        border: solid 1px color.change($button-color,$saturation:0%);
+        color: color.change($button-color,$saturation:0%);
+    }
+}
+@mixin generate-button($title, $button-color){
+    .button--#{unquote($title)}--solid{
+        @include generate-solid($button-color)
+    }
+    .button--#{unquote($title)}--outline{
+        @include generate-outline($button-color)
     }
 }
 .button{

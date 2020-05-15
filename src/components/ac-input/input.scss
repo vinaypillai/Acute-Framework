@@ -1,4 +1,6 @@
-/*@use "../ac-button/button.scss";*/
+@use "@/styles/_global" as global;
+@use "../ac-button/button";
+@use "sass:map";
 @mixin input--text
 {
 	padding: 15px;
@@ -38,7 +40,18 @@ input[type=reset],
 input[type=submit],
 input[type=file]::-webkit-file-upload-button
 {
-	/*@extend .button;*/
+	@extend .button;
+}
+input[type=button]{
+	@include button.generate-solid(map.get(global.$color-map,"primary"));
+}
+input[type=reset],
+input[type=file]::-webkit-file-upload-button
+{
+	@include button.generate-solid(map.get(global.$color-map,"secondary"));
+}
+input[type=submit]{
+	@include button.generate-solid(map.get(global.$color-map,"success"));
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

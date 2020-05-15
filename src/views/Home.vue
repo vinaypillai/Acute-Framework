@@ -58,7 +58,7 @@
             <ac-col cols="3" v-for="type in inputTypes" :key="type">  
                 <ac-grid cols="12">
                     <ac-col cols="6">
-                        <ac-input :type="type" :ref="'input'+type" v-on:input="updateInputValues(type,$event)"></ac-input>
+                        <ac-input :type="type" :ref="'input'+type" v-on:input="updateInputValues(type,$event)" :value="type"></ac-input>
                     </ac-col>
                     <ac-col cols="6" >
                         <div>Value:{{inputValues[type]}}</div>

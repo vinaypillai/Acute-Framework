@@ -1,15 +1,24 @@
 <template>
     <div>
+
         <label v-if="label.length>0" :for="inputId">{{label}}</label>
-        <div v-if="textInputs.includes(type)">
-            <input :type="type" :name="name" :id="inputId"
-        ref="input" :placeholder="placeholder" :value="value" v-on:input="updateValue()">
-        </div>
-        <div v-else-if="type=='number'" class="input--number">
+        <div v-if="type=='number'" class="input--number">
             <input :type="type" :name="name" :id="inputId"
         ref="input" :placeholder="placeholder" :value="value" v-on:input="updateValue()">
             <div class="incrementButton"></div>
             <div class="decrementButton"></div>
+        </div>
+        <div v-else-if="type=='image'">
+            <input :type="type" :name="name" :id="inputId"
+        ref="input" :placeholder="placeholder" :src="value" v-on:input="updateValue()">
+        </div>
+        <div v-else-if="type=='file'">
+            <input :type="type" :name="name" :id="inputId"
+        ref="input" :placeholder="placeholder" v-on:input="updateValue()">
+        </div>
+        <div v-else>
+            <input :type="type" :name="name" :id="inputId"
+        ref="input" :placeholder="placeholder" :value="value" v-on:input="updateValue()">
         </div>
     </div>
 </template>
