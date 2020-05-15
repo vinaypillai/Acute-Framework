@@ -35,21 +35,33 @@
             </ac-col>
         </ac-grid>
         <ac-grid cols="6">
-            <ac-col cols="3">  
+            <ac-col cols="6">  
                 <ac-grid cols="12">
-                    <ac-col cols="6">
-                        <ac-dropdown :options="dropdownOptions"></ac-dropdown>
+                    <ac-col cols="3">
+                        <ac-dropdown :options="dropdownOptions" v-model="dropdown1"></ac-dropdown>
                     </ac-col>
-                    <ac-col cols="6">
-                        <ac-dropdown :options="dropdownOptions" dark></ac-dropdown>
+                    <ac-col cols="3">
+                        <div>{{dropdown1}}</div>
+                    </ac-col>
+                    <ac-col cols="3">
+                        <ac-dropdown :options="dropdownOptions" dark v-model="dropdown2"></ac-dropdown>
+                    </ac-col>
+                    <ac-col cols="3">
+                        <div>{{dropdown2}}</div>
                     </ac-col>
                 </ac-grid>
                 <ac-grid cols="12">
-                    <ac-col cols="6">
-                        <ac-dropdown displace :options="dropdownOptions"></ac-dropdown>
+                    <ac-col cols="3">
+                        <ac-dropdown displace :options="dropdownOptions" v-model="dropdown3"></ac-dropdown>
                     </ac-col>
-                    <ac-col cols="6">
-                        <ac-dropdown displace :options="dropdownOptions" dark></ac-dropdown>
+                    <ac-col cols="3">
+                        <div>{{dropdown3}}</div>
+                    </ac-col>
+                    <ac-col cols="3">
+                        <ac-dropdown displace :options="dropdownOptions" dark v-model="dropdown4"></ac-dropdown>
+                    </ac-col>
+                    <ac-col cols="3">
+                        <div>{{dropdown4}}</div>
                     </ac-col>
                 </ac-grid>
             </ac-col>
@@ -79,7 +91,12 @@
                     {text:"element 1",value:"element 1"},
                     {text:"element 2",value:"element 2"},
                     {text:"element 3",value:"element 3"},
-                ]
+                    {text:"element 4",value:"element 4"},
+                ],
+                dropdown1:"element 1",
+                dropdown2:"element 2",
+                dropdown3:"element 3",
+                dropdown4:"element 4",
             }
 
         },
@@ -96,6 +113,6 @@
 <style lang="scss" scoped>
     .content::v-deep .nav.transfer-class{
         background-color: #4d7587;
-        height: 170px;
+        height: 100px;
     }
 </style>

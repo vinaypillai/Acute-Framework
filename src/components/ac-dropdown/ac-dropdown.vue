@@ -1,6 +1,6 @@
 <template>
     <div :class="classes" ref="dropdown">
-        <select ref="dropdownSelect">
+        <select ref="dropdownSelect" v-model="dropdownValue">
             <option v-for="option in options" :key="option.value" :value="option.value">{{option.text}}</option>
         </select>
         <div class="dropdown__selected" ref="dropdownSelectedOption"></div>
@@ -23,13 +23,17 @@
             "dark":{
                 type:Boolean,
                 default:false,
+            },
+            "value":{
+                type:String
             }
         },
         data(){
             return {
                 "dropdown":null,
                 "dropdownSelect":null,
-                "active":false
+                "active":false,
+                "dropdownValue":"element 1"
             }
         },
         computed:{
@@ -62,49 +66,57 @@
         },
         mounted(){
             let that = this;
-            that.dropdown = that.$refs.dropdown;
-            that.dropdownSelect = that.$refs.dropdownSelect;
-            that.dropdownInput = that.$refs.dropdownInput;
-            that.dropdownSelectedOption = that.$refs.dropdownSelectedOption;
-            that.dropdownOptionsWrapper = that.$refs.dropdownOptionsWrapper;
-            that.dropdownInput.addEventListener("keyup",function(){
-                if(that.dropdownInput.value.trim().length>0){
-                    const options = [...that.dropdown.getElementsByClassName("dropdown__options")];
-                    const newOptions = [];
-                    let invalidIndex = Number.MAX_VALUE - options.length;
-                    options.forEach(function(option){
-                        newOptions[newOptions.length] = {
-                            index: (option.textContent.trim().toUpperCase().search(that.dropdownInput.value.trim().toUpperCase())==-1)? 
-                            invalidIndex:option.textContent.toUpperCase().search(that.dropdownInput.value.toUpperCase()),
-                            opt:option 
-                        }
-                        invalidIndex++;
-                    });
-                    newOptions.sort((a, b) => (a.opt.textContent < b.opt.textContent) ? 1 : -1)
-                    newOptions.sort((a, b) => (a.index > b.index) ? 1 : -1)
-                    newOptions.forEach(function(option){
-                        option.opt.parentNode.appendChild(option.opt);
-                    })
-                }
-            });
-            window.addEventListener("click",function(e){
-                if(e.srcElement!=that.dropdown && !that.dropdown.contains(e.srcElement)){
-                    that.closeDropdown();
-                }
-            })
-            that.dropdownSelectedOption.textContent = that.dropdownSelect.options[that.dropdownSelect.selectedIndex].textContent;
-            that.dropdownSelectedOption.addEventListener("click", function(){
-                that.active=!that.active;
-                that.dropdownInput.focus();
-            });
-            const options = [...that.dropdown.getElementsByClassName("dropdown__option")];
-            options.forEach((option,i)=>{
-                option.addEventListener("click",function(){
-                    that.dropdownSelectedOption.textContent = option.textContent;
-                    that.dropdownSelect.selectedIndex = i;
-                    that.dropdown.classList.remove("dropdown--active");
-                    that.dropdownSelect.dispatchEvent(new Event("change"));
+            that.dropdownValue = that.value
+            this.$nextTick(function(){    
+                that.dropdown = that.$refs.dropdown;
+                that.dropdownSelect = that.$refs.dropdownSelect;
+                that.dropdownInput = that.$refs.dropdownInput;
+                that.dropdownSelectedOption = that.$refs.dropdownSelectedOption;
+                that.dropdownOptionsWrapper = that.$refs.dropdownOptionsWrapper;
+                that.dropdownSelect.addEventListener("change",function(){
+                     that.$emit('input',that.dropdownSelect.value)
+                })
+                that.dropdownInput.addEventListener("keyup",function(){
+                    if(that.dropdownInput.value.trim().length>0){
+                        const options = [...that.dropdown.getElementsByClassName("dropdown__options")];
+                        const newOptions = [];
+                        let invalidIndex = Number.MAX_VALUE - options.length;
+                        options.forEach(function(option){
+                            newOptions[newOptions.length] = {
+                                index: (option.textContent.trim().toUpperCase().search(that.dropdownInput.value.trim().toUpperCase())==-1)? 
+                                invalidIndex:option.textContent.toUpperCase().search(that.dropdownInput.value.toUpperCase()),
+                                opt:option 
+                            }
+                            invalidIndex++;
+                        });
+                        newOptions.sort((a, b) => (a.opt.textContent < b.opt.textContent) ? 1 : -1)
+                        newOptions.sort((a, b) => (a.index > b.index) ? 1 : -1)
+                        newOptions.forEach(function(option){
+                            option.opt.parentNode.appendChild(option.opt);
+                        })
+                    }
                 });
+                window.addEventListener("click",function(e){
+                    if(e.srcElement!=that.dropdown && !that.dropdown.contains(e.srcElement)){
+                        that.closeDropdown();
+                    }
+                })
+                if(that.dropdownSelect.selectedIndex != -1){
+                    that.dropdownSelectedOption.textContent = that.dropdownSelect.options[that.dropdownSelect.selectedIndex].textContent;
+                }
+                that.dropdownSelectedOption.addEventListener("click", function(){
+                    that.active=!that.active;
+                    that.dropdownInput.focus();
+                });
+                const options = [...that.dropdown.getElementsByClassName("dropdown__option")];
+                options.forEach((option,i)=>{
+                    option.addEventListener("click",function(){
+                        that.dropdownSelectedOption.textContent = option.textContent;
+                        that.dropdownSelect.selectedIndex = i;
+                        that.dropdown.classList.remove("dropdown--active");
+                        that.dropdownSelect.dispatchEvent(new Event("change"));
+                    });
+                })
             })
         }
 
