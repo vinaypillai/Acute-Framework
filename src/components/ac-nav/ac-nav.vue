@@ -124,6 +124,11 @@
                             this.updateClasses();
                         }
                     }
+                    Object.keys(this.$el.dataset).forEach((key)=>{
+                        if(key.substr(0,2)=="v-"){
+                            this.$refs['nav'].dataset[key] = "" 
+                        }
+                    })
                 }
             }
         }

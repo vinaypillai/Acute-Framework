@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content">
         <ac-nav position="right" dark class="transfer-class">
             <ul class="nav--links">
                 <li><a href="home">Home</a></li>
@@ -93,3 +93,8 @@
         }
     }
 </script>
+<style lang="scss" scoped>
+    .content::v-deep .transfer-class{
+        background-color: #4d7587;
+    }
+</style>
