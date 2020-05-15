@@ -1,4 +1,4 @@
-@use "../ac-button/button";
+/*@use "../ac-button/button.scss";*/
 @mixin input--text
 {
 	padding: 15px;
@@ -38,7 +38,7 @@ input[type=reset],
 input[type=submit],
 input[type=file]::-webkit-file-upload-button
 {
-	@extend .button;
+	/*@extend .button;*/
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

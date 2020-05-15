@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ac-nav position="right" dark class="asd asdasd">
+        <ac-nav position="right" dark class="transfer-class">
             <ul class="nav--links">
                 <li><a href="home">Home</a></li>
                 <li><a href="home">Home</a></li>

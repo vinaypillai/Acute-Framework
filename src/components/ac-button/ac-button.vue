@@ -4,6 +4,7 @@
     </button>
 </template>
 <script type="text/javascript">
+    import "./button.scss";
     export default{
         data(){
             return{
@@ -55,7 +56,3 @@
         }
     }
 </script>
-<style lang="scss" scoped>
-    @debug $font-size;
-    /*@use "button"*/
-</style>

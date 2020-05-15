@@ -14,9 +14,9 @@ $color-map: (
 'grey': #333333);
 
 @each $current-color in map.keys($color-map){
-	.bg-#{$current-color}{
-		background-color: map.get($color-map,$current-color);
-	}
+    .bg-#{$current-color}{
+        background-color: map.get($color-map,$current-color);
+    }
 }
 @function hexToRgb($hex){
     $hex:string.to-upper-case(inspect($hex));

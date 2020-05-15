@@ -92,6 +92,8 @@
             },
             updateClasses(){
                 this.class = [...this.$el.classList];
+                this.$el.classList=[];
+                this.classesSet = true;
             }
         },
         beforeCreate(){
@@ -106,10 +108,23 @@
             this.updateClasses();
         },
         watch:{
-            "$el.classList":function(){
-                this.updateClasses();
-                this.$el.classList=[];
-                console.log("running");
+            $el:{
+                immedate:true,
+                deep:true,
+                handler(newVal,oldVal){
+                    let classesChanged=false;
+                    newVal.classList.forEach((name,i)=>{
+                        oldVal[i]!=name;
+                        classesChanged=true;
+                    })
+                    if(classesChanged){
+                        if(this.classesSet){
+                            this.classesSet=false;
+                        }else{
+                            this.updateClasses();
+                        }
+                    }
+                }
             }
         }
     }

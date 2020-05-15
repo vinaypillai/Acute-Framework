@@ -14,6 +14,7 @@
     </div>
 </template>
 <script type="text/javascript">
+    import "./input.scss"
     export default{
         props:{
             "type":{
@@ -63,6 +64,3 @@
         }
     }
 </script>
-<style lang="scss" scoped>
-    @use "input";
-</style>
