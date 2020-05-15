@@ -108,14 +108,20 @@
                     }
                 })
                 this.classesSet = true;
+                // Add root dataset to child
+                Object.keys(this.$el.dataset).forEach((key)=>{
+                    this.navElement.dataset[key] = "";
+                })
             },
-            updateSpacers(){    
-                this.$nextTick(function(){
-                    const navHeight = this.navElement.getBoundingClientRect().height;
+            updateSpacers(){
+                const transitonLengthMS =150;  
+                let that =  this;
+                setTimeout(function(){
+                    const navHeight = that.navElement.getBoundingClientRect().height;
                     [...document.getElementsByClassName("nav--spacer")].forEach((spacer)=>{
                         spacer.style.height = navHeight +"px";
                     })
-                })
+                },transitonLengthMS*1.1)
             },
         },
         beforeCreate(){

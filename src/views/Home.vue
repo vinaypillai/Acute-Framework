@@ -96,6 +96,6 @@
 <style lang="scss" scoped>
     .content::v-deep .nav.transfer-class{
         background-color: #4d7587;
-        height: 100px;
+        height: 170px;
     }
 </style>
