@@ -1,6 +1,6 @@
 {
   "name": "acute-framework",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "The Acute Framework is a (relatively) lightweight Vue.js component framework designed for Bootstrap users who want a bit more control over their layouts.",
   "author": {
     "name": "Vinay Pillai",
@@ -40,5 +40,12 @@
     "type": "git",
     "url": "git+https://github.com/vinaypillai/Acute-Framework.git"
   },
-  "keywords":["vue","vuejs","vuejs-components","vue-component-library","acute-framework","bootstrap"]
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vuejs-components",
+    "vue-component-library",
+    "acute-framework",
+    "bootstrap"
+  ]
 }
