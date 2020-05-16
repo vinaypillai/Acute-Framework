@@ -130,7 +130,7 @@
                 immediate:true,
             },
             dropdownValue(val){
-                this.dropdownSelect.value = val;
+                this.$refs.dropdownSelect.value = val;
                 this.$refs.dropdownSelect.dispatchEvent(new Event("change"));
             }
         }
