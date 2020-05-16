@@ -1,4 +1,3 @@
-
 # Acute Framework
 The Acute Framework is a (relatively) lightweight Vue.js component framework designed for Bootstrap users who want a bit more control over their layouts.
 *   [Installation](#installation)
@@ -15,6 +14,16 @@ The Acute Framework is a (relatively) lightweight Vue.js component framework des
         * [Pill](#pill)
         * [Round](#round)
     * [Semantic Colors](#semantic-colors)
+    * [Navs](#navs)
+        *  [Layout](#layout)
+            * [Position](#position)
+            * [Fixed](#fixed)
+            * [Hidden](#hidden)
+            * [Sticky](#sticky)
+        * [Design](#design)
+            * [Dark](#dark)
+            * [Transparent](#transparent)
+* [License](#license)
 
 ## Installation
 
@@ -155,3 +164,76 @@ There are five semantic colors in the Acute Framework. The colors are integrated
 |success|#3498db|
 |danger|#e55947|
 |hazard|#bd7800|
+
+### Navs
+The Acute Framework has six properties for customization available for navs. These are divided across layout:
+* `position`
+* `fixed`
+* `hidden`
+* `sticky`
+
+And design:
+* `dark`
+* `transparent`
+
+#### Layout
+
+##### Position
+An `ac-nav` element can be positioned at the `top`, `left`, or `right` of the screen.
+```html
+<ac-nav position="top"></ac-nav>
+```
+Like any other element, the sizing of a nav can be made responsive through the use of the grid system.
+```html
+<ac-grid cols="4">
+    <ac-col cols="3" md-cols="1">
+        <ac-nav position="left">Some content</ac-nav>
+    <ac-col>
+</ac-grid>
+```
+
+##### Fixed
+If the `fixed` flag is set for a top navbar, its position will be constant on the screen, regardless of scrolling. Side navbars are by default position fixed.
+```html
+<ac-nav position="top" fixed></ac-nav>
+```
+To solve the common problem of content being swallowed when a top nav is fixed, a spacer is automatically inserted with the same height of its parent nav to preserve layouts.
+
+##### Hidden
+The `hidden` flag serves as a way to control the visibility of side navs when they are not needed. 
+```html
+<ac-nav position="left" hidden></ac-nav>
+```
+Setting hidden to false, or omitting the flag altogether will make the navbar slide into view.
+```html
+<ac-nav position="left" :hidden="false"></ac-nav>
+```
+
+##### Sticky
+The `sticky` flag works similarly to the `fixed` flag, for top navs. Sticky navs can be placed anywhere on the screen, but will fix to the top once they are scrolled to.
+```html
+<ac-nav position="top" sticky></ac-nav>
+```
+
+#### Design
+The default color scheme for a navbar is a white `background-color` with "black" text. However, this can be easily altered for different use cases.
+
+##### Dark
+The `dark` flag will change the `background-color` to #333 and use white text.
+```html
+<ac-nav position="top" dark></ac-nav>
+```
+
+##### Transparent
+The `transparent` flag is designed for use with fixed top navs. A transparent top-nav will have white text and a transparent background before the user has scrolled, but will transition to the default nav formatting of a `background-color` with "black" text once scrolling occurs.
+```html
+<ac-nav position="top" transparent></ac-nav>
+```
+## License
+Copyright 2020 Vinay Pillai
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

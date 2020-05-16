@@ -1,13 +1,17 @@
 <template>
     <div class="content">
-        <ac-nav position="top" dark class="transfer-class asd" fixed>
-            <ul class="nav--links">
-                <li><a href="home">Home</a></li>
-                <li><a href="home">Home</a></li>
-                <li><a href="home">Home</a></li>
-                <li><a href="home">Home</a></li>
-            </ul>
-        </ac-nav>
+        <ac-grid>
+            <ac-col cols="6">
+                <ac-nav position="top" dark class="transfer-class asd">
+                    <ul class="nav--links">
+                        <li><a href="home">Home</a></li>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="home">Home</a></li>
+                    </ul>
+                </ac-nav>
+            </ac-col>
+        </ac-grid>
         <ac-grid cols="1" sm-cols="2" md-cols="3" lg-cols="6" xl-cols="12">
             <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
             <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
@@ -134,8 +138,8 @@
         padding: 2%;
 
     }
-    .content::v-deep .nav.transfer-class{
+    .content .nav.transfer-class{
         background-color: #4d7587;
-        height: 100px;
+        /*height: 100px;*/
     }
 </style>

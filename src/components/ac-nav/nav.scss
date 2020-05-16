@@ -1,6 +1,16 @@
 @use "sass:map";
 $nav-shadow-color: rgba(0,0,0,0.5);
+.---nav-wrapper{
+	width:inherit;
+	&.--\!nav--top{
+		width: 100%;
+		&.--\!nav--top--fixed{
+			width: inherit;
+		}
+	}
+}
 .nav{
+	width: inherit;
 	position: relative;
 	z-index: 100000;
 	background-color: #FFF;
@@ -88,6 +98,7 @@ $nav-shadow-color: rgba(0,0,0,0.5);
 		height:75px;
 		padding:0 20px;
 		&--fixed{	
+			width: inherit;
 			position:fixed;
 			top:0;
 			left:0;

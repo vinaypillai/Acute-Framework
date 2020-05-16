@@ -1,5 +1,5 @@
 <template>
-    <div ref="navWrapper">
+    <div ref="navWrapper" class="---nav-wrapper">
         <nav :class="navClasses" ref="nav">
             <slot></slot>
         </nav>
@@ -62,7 +62,7 @@
                     navClasses.push((this.navTopScrolled) ? "nav--top--scrolled" : "");
                     if(this.fixed){
                         navClasses.push("nav--top--fixed");
-                        this.$once("hook:mounted",()=>{    
+                        this.$once("hook:updated",()=>{    
                             let nav = this.$refs.nav;
                             nav.dataset.navId=this.navId;
                             let spacerId = "spacer--"+this.navId;
@@ -94,23 +94,33 @@
                     this.navTopScrolled=false;
                 }
             },
-            updateClasses(){
+            async updateClasses(){
                 // Prepend all root classess with ac- and add root classes to nav
-                const rootClasses = [...this.$el.classList];
+                await this.$nextTick();
+                let rootClasses = [...this.$el.classList];
                 // Trim ac- prepend and add to nav
-                this.class = rootClasses.map((name)=>(name.substr(0,3)!="ac-") ? name : name.substr(3));
+                // Do not add any -- classes to the nav element
+                this.class = rootClasses.filter((name)=>name.substr(0,2)!="--")
+                    .map((name)=>(name.substr(0,3)!="ac-") ? name : name.substr(3));
                 this.$el.classList=[];
-                this.class.forEach((name)=>{
-                    if(name.substr(0,3)!="ac-"){
-                        this.$el.classList.add("ac-"+name)
-                    }else{
-                        this.$el.classList.add(name)
-                    }
-                })
-                this.classesSet = true;
-                // Add root dataset to child
-                Object.keys(this.$el.dataset).forEach((key)=>{
-                    this.navElement.dataset[key] = "";
+                this.$nextTick(function(){
+                    // Always keep "---" classes in nav wrapper
+                    rootClasses = rootClasses.filter((name)=>name.substr(0,2)!="--" || name.substr(0,3)=="---");
+                    // Add "--!" classes to nav wrapper if they match classes in the nav element
+                    rootClasses.push(...this.class.filter(name=>name.length>0 && !rootClasses.includes("ac-"+name))
+                        .map(name=>"--!"+name))
+                    rootClasses.forEach((name)=>{
+                        if(name.substr(0,3)!="ac-" && name.substr(0,2)!="--"){
+                            this.$el.classList.add("ac-"+name)
+                        }else{
+                            this.$el.classList.add(name)
+                        }
+                    })
+                    // Add root dataset to child
+                    Object.keys(this.$el.dataset).forEach((key)=>{
+                        this.navElement.dataset[key] = "";
+                    })
+                    this.classesSet = true; 
                 })
             },
             updateSpacers(){

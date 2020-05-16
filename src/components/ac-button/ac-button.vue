@@ -34,10 +34,6 @@
             round:{
                 type:Boolean,
                 default:false
-            },
-            toggle:{
-                type:Boolean,
-                default:false
             }
         },
         computed:{

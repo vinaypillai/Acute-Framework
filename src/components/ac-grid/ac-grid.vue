@@ -67,7 +67,6 @@
         },
         data(){
             return {
-                styleObj:{}
             }
         },
         computed:{
@@ -84,14 +83,14 @@
                     gridClass.push((this.xlCols !=-1) ? 'grid-xl-'+this.xlCols : '');
                 }
                 return gridClass
+            },
+            styleObj(){
+                return {
+                    "--align-h":this.alignH,
+                    "--align-v":this.alignV
+                }
             }
         },
-        mounted(){
-            this.styleObj = {
-                "--align-h":this.alignH,
-                "--align-v":this.alignV
-            }
-        }
     }
 </script>
 <style lang="scss" scoped>
