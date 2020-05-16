@@ -38,6 +38,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vinaypillai/Acute-Framework.git"
+    "url": "git+https://github.com/vinaypillai/Acute-Framework.git"
   }
 }

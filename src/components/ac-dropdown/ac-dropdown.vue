@@ -33,7 +33,7 @@
                 "dropdown":null,
                 "dropdownSelect":null,
                 "active":false,
-                "dropdownValue":"element 1"
+                "dropdownValue":null
             }
         },
         computed:{
@@ -67,20 +67,17 @@
         mounted(){
             let that = this;
             that.dropdownValue = that.value
-            this.$nextTick(function(){    
+            that.$nextTick(function(){    
                 that.dropdown = that.$refs.dropdown;
                 that.dropdownSelect = that.$refs.dropdownSelect;
                 that.dropdownInput = that.$refs.dropdownInput;
                 that.dropdownSelectedOption = that.$refs.dropdownSelectedOption;
                 that.dropdownOptionsWrapper = that.$refs.dropdownOptionsWrapper;
                 that.dropdownSelect.addEventListener("change",function(){
-                    const options = [...that.dropdown.getElementsByClassName("dropdown__option")];
-                     that.$emit('input',that.dropdownSelect.value)
-                    options.forEach((option,i)=>{
-                        if(that.dropdownSelect.selectedIndex==i){
-                            that.dropdownSelectedOption.textContent = option.textContent;
-                        }
-                    });
+                    that.$nextTick(function(){
+                        that.$emit('input',that.dropdownSelect.value)
+                        that.dropdownSelectedOption.textContent = that.dropdownSelect.value;
+                    })
                 })
                 that.dropdownInput.addEventListener("keyup",function(){
                     if(that.dropdownInput.value.trim().length>0){
@@ -124,6 +121,18 @@
                     });
                 })
             })
+        },
+        watch:{
+            value:{
+                handler(val){
+                    this.dropdownValue = val;
+                },
+                immediate:true,
+            },
+            dropdownValue(val){
+                this.dropdownSelect.value = val;
+                this.$refs.dropdownSelect.dispatchEvent(new Event("change"));
+            }
         }
 
     }
