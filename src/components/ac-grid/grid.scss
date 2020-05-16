@@ -1,6 +1,6 @@
 $max-grid-col:12;
-$grid-types: "xs","sm","md","lg";
-$grid-breakpoints: "576px","768px","992px","1200px";
+$grid-types: "xs","sm","md","lg","xl";
+$grid-breakpoints: "0px",576px","768px","992px","1200px";
 
 /*General Grid and Col styles*/
 @mixin grid{

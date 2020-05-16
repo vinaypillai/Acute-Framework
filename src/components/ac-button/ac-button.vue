@@ -15,7 +15,7 @@
                 type:String,
                 default:"primary",
                 validator:(value)=>{
-                    let buttonVariants=['primary','secondary','success','danger','hazard','white','grey','turquoise','emerald','peterriver','amethyst','wetasphalt','greensea','nephritis','belizehole','wisteria','midnightblue','sunflower','carrot','alizarin','clouds','concrete','orange','pumpkin','pomegranate','silver','asbestos'];
+                    let buttonVariants=['primary','secondary','success','danger','hazard'];
                     return buttonVariants.includes(value);
                 }
             },
