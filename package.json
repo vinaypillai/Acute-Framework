@@ -1,6 +1,6 @@
 {
   "name": "acute-framework",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "The Acute Framework is a (relatively) lightweight Vue.js component framework designed for Bootstrap users who want a bit more control over their layouts.",
   "author": {
     "name": "Vinay Pillai",
