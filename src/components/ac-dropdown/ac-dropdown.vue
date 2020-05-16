@@ -74,7 +74,13 @@
                 that.dropdownSelectedOption = that.$refs.dropdownSelectedOption;
                 that.dropdownOptionsWrapper = that.$refs.dropdownOptionsWrapper;
                 that.dropdownSelect.addEventListener("change",function(){
+                    const options = [...that.dropdown.getElementsByClassName("dropdown__option")];
                      that.$emit('input',that.dropdownSelect.value)
+                    options.forEach((option,i)=>{
+                        if(that.dropdownSelect.selectedIndex==i){
+                            that.dropdownSelectedOption.textContent = option.textContent;
+                        }
+                    });
                 })
                 that.dropdownInput.addEventListener("keyup",function(){
                     if(that.dropdownInput.value.trim().length>0){
