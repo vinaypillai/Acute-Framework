@@ -108,6 +108,7 @@ Content can be divided according to the following device width breakpoints:
 |md| 768px|
 |lg|992px |
 |xl|1200px|
+
 The size listed is the minimum screen width for the breakpoint styles to take effect. Styling for xs devices is the default. As the screen size grows, styles for each successive breakpoint will supercede the previous one.
 
 ### Buttons

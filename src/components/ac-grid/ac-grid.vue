@@ -41,6 +41,13 @@
                     return value==-1 || parseFloat(value)<=12 && parseFloat(value)>0;
                 }
             },
+            "xl-cols":{
+                type:[Number,String],
+                default:-1,
+                validator:(value)=>{
+                    return value==-1 || parseFloat(value)<=12 && parseFloat(value)>0;
+                }
+            },
             "align-h":{
                 type:String,
                 default:"initial",
@@ -66,14 +73,15 @@
         computed:{
             gridClass(){
                 let gridClass = [];
-                if(this.cols==-1 && this.xsCols==-1 && this.smCols==-1 && this.mdCols==-1 && this.lgCols==-1){
-                    gridClass.push('grid-'+this.cols);
+                if(this.cols==-1 && this.xsCols==-1 && this.smCols==-1 && this.mdCols==-1 && this.lgCols==-1 && this.xlCols==-1){
+                    gridClass.push('grid-'+12);
                 }else{
                     gridClass.push((this.cols !=-1) ? 'grid-'+this.cols : '');
                     gridClass.push((this.xsCols !=-1) ? 'grid-xs-'+this.xsCols : '');
                     gridClass.push((this.smCols !=-1) ? 'grid-sm-'+this.smCols : '');
                     gridClass.push((this.mdCols !=-1) ? 'grid-md-'+this.mdCols : '');
                     gridClass.push((this.lgCols !=-1) ? 'grid-lg-'+this.lgCols : '');
+                    gridClass.push((this.xlCols !=-1) ? 'grid-xl-'+this.xlCols : '');
                 }
                 return gridClass
             }

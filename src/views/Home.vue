@@ -8,6 +8,20 @@
                 <li><a href="home">Home</a></li>
             </ul>
         </ac-nav>
+        <ac-grid cols="1" sm-cols="2" md-cols="3" lg-cols="6" xl-cols="12">
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+            <ac-col cols="1"><div class="col-display">.col-1</div></ac-col>
+        </ac-grid>
         <ac-grid cols="5" align-h="center">
             <ac-col cols="3">
                 <div>
@@ -111,6 +125,15 @@
     }
 </script>
 <style lang="scss" scoped>
+    .col-display{
+        border-radius:5px;
+        border:solid 1px #893535;
+        background-color: #89353599;
+        text-align: center;
+        color: #FFF;
+        padding: 2%;
+
+    }
     .content::v-deep .nav.transfer-class{
         background-color: #4d7587;
         height: 100px;
