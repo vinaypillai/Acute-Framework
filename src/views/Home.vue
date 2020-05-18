@@ -43,6 +43,12 @@
                 <div>
                     <ac-button v-for="color in colors" :key="color" :variant="color" pill>{{color}}</ac-button>
                 </div>
+                <div>
+                    <ac-button v-for="color in colors" :key="color" :variant="color" pill block>{{color}}</ac-button>
+                </div>
+                <div>
+                    <ac-button v-for="color in colors" :key="color" :variant="color" pill round block>{{color}}</ac-button>
+                </div>
             </ac-col>
         </ac-grid>
         <ac-grid>

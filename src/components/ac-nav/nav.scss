@@ -21,15 +21,22 @@ $nav-shadow-color: rgba(0,0,0,0.5);
 	justify-content: center;
 	box-shadow: 0 0 15px $nav-shadow-color;
 	transition: background-color, left, right, 0.15s ease-in-out;
+	.nav--links{
+		li,
+		a{
+			text-decoration: none;
+			color: #333;
+		}
+	}
 	&--dark{
 		background-color:#333;
 		color: #FFF;
-	}
-	.nav--links{
-		&,
-		li,
-		a{
-			all:unset;
+		.nav--links{
+			li,
+			a{
+				text-decoration: none;
+				color: #FFF;
+			}
 		}
 	}
 	&.nav--side{

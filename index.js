@@ -6,7 +6,7 @@ import acToggle from "./src/components/ac-toggle/ac-toggle.vue"
 import acInput from "./src/components/ac-input/ac-input.vue"
 import acDropdown from "./src/components/ac-dropdown/ac-dropdown.vue"
 import UUID from 'vue-uuid';
-
+import "./src/styles/body.scss"
 
 export default{
     install(Vue){

@@ -3,8 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import AcuteFramework from "../index.js";
-import "./styles/body.scss"
-
 Vue.use(AcuteFramework);
 
 Vue.config.productionTip = false
