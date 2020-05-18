@@ -1,5 +1,10 @@
 # Acute Framework
+
+![NPM](https://nodei.co/npm/acute-framework.png)
+
+![version badge](https://img.shields.io/github/v/release/vinaypillai/Acute-Framework) ![Travis status](https://img.shields.io/travis/com/vinaypillai/Acute-Framework) ![dependencies badge](https://img.shields.io/librariesio/release/npm/acute-framework)![License badge](https://img.shields.io/npm/l/acute-framework)
 The Acute Framework is a (relatively) lightweight Vue.js component framework designed for Bootstrap users who want a bit more control over their layouts.
+
 *   [Installation](#installation)
 *   [Add to Vue.js Projects](#add-to-vue.js-projects)
 *   [Usage](#usage)
@@ -193,9 +198,9 @@ Like any other element, the sizing of a nav can be made responsive through the u
 ```
 
 ##### Fixed
-If the `fixed` flag is set for a top navbar, its position will be constant on the screen, regardless of scrolling. Side navbars are by default position fixed.
+If the `fixed` flag is set for a navbar, its position will be constant on the screen, regardless of scrolling.
 ```html
-<ac-nav position="top" fixed></ac-nav>
+<ac-nav position="right" fixed></ac-nav>
 ```
 To solve the common problem of content being swallowed when a top nav is fixed, a spacer is automatically inserted with the same height of its parent nav to preserve layouts.
 
