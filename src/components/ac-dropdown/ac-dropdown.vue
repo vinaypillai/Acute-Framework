@@ -76,7 +76,8 @@
                 that.dropdownSelect.addEventListener("change",function(){
                     that.$nextTick(function(){
                         that.$emit('input',that.dropdownSelect.value)
-                        that.dropdownSelectedOption.textContent = that.dropdownSelect.value;
+                        const currentOption = this.options.filter((option)=>option.value==that.dropdownSelect.value)[0];
+                        that.dropdownSelectedOption.textContent = (currentOption!=null) ? currentOption.text : "";
                     })
                 })
                 that.dropdownInput.addEventListener("keyup",function(){

@@ -2,7 +2,7 @@
 
 ![NPM](https://nodei.co/npm/acute-framework.png)
 
-![version badge](https://img.shields.io/github/v/release/vinaypillai/Acute-Framework) ![Travis status](https://img.shields.io/travis/com/vinaypillai/Acute-Framework) ![dependencies badge](https://img.shields.io/librariesio/release/npm/acute-framework)![License badge](https://img.shields.io/npm/l/acute-framework)
+![version badge](https://img.shields.io/github/v/release/vinaypillai/Acute-Framework) ![Travis status](https://img.shields.io/travis/com/vinaypillai/Acute-Framework) ![dependencies badge](https://img.shields.io/librariesio/release/npm/acute-framework) ![License badge](https://img.shields.io/npm/l/acute-framework)
 
 The Acute Framework is a (relatively) lightweight Vue.js component framework designed for Bootstrap users who want a bit more control over their layouts.
 *   [Installation](#installation)

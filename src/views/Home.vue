@@ -112,15 +112,15 @@
                 inputTypes:["button","checkbox","color","date","datetime-local","email","file","hidden","image","month","number","password","radio","range","reset","search","submit","tel","text","url","week"],
                 inputValues:{},
                 dropdownOptions:[
-                    {text:"element 1",value:"element 1"},
-                    {text:"element 2",value:"element 2"},
-                    {text:"element 3",value:"element 3"},
-                    {text:"element 4",value:"element 4"},
+                    {text:"element 1",value:"e1"},
+                    {text:"element 2",value:"e2"},
+                    {text:"element 3",value:"e3"},
+                    {text:"element 4",value:"e4"},
                 ],
-                dropdown1:"element 1",
-                dropdown2:"element 2",
-                dropdown3:"element 3",
-                dropdown4:"element 4",
+                dropdown1:"e1",
+                dropdown2:"e2",
+                dropdown3:"e3",
+                dropdown4:"e4",
             }
 
         },

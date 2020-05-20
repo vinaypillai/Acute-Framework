@@ -80,6 +80,8 @@ $text-shadow-blur:0.25px;
     &.button--round{
         border-radius:9999px;
         padding: 1%;
+        max-height: 100%;
+        overflow: hidden;
         &::after{
             content:"";
             display: block;
